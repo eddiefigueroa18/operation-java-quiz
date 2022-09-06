@@ -5,6 +5,12 @@
     font-family: sans-serif;
 }
 
+:root {
+    --vscode: #252934;
+    --correct: green;
+    --incorrect: red;
+}
+
 body {
     padding: 0px;
     margin: 0px;
@@ -13,7 +19,7 @@ body {
     height: 100vh;
     justify-content:center;
     align-items: center;
-    background-color: #252934;
+    background-color: var(--vscode);
 }
 
 .container {
@@ -24,6 +30,10 @@ body {
     box-shadow: 0 0 10px 2px;
 }
 
+#question {
+    font-size: 20px;
+}
+
 .btn-grid {
     display: grid;
     grid-template-columns: repeat(1, auto);
@@ -32,16 +42,18 @@ body {
 }
 
 .answer-btn {
+    font-size: 16px;
     border-radius: 5px;
     padding: 5px 10px;
 }
 
 .answer-btn:hover {
-    box-shadow: 0 0 5px #252934;
+    box-shadow: 0 0 5px var(--vscode);
 }
 
 .start-btn,
 .next-btn {
+    font-size: 16px;
     font-weight: bold;
 }
 
