@@ -7,8 +7,8 @@
 
 :root {
     --vscode: #252934;
-    --correct: green;
-    --incorrect: red;
+    --correct: #15d80fc4;
+    --wrong: #ee1924c4;
 }
 
 body {
@@ -32,6 +32,7 @@ body {
 
 #question {
     font-size: 20px;
+    padding: 10px;
 }
 
 .btn-grid {
@@ -50,6 +51,15 @@ body {
 .answer-btn:hover {
     box-shadow: 0 0 5px var(--vscode);
 }
+
+/* .answer-btn.correct {
+    color: var(--correct);
+    color:black;
+}
+
+.answer-btn.wrong {
+    color: var(--wrong);
+} */
 
 .start-btn,
 .next-btn {
