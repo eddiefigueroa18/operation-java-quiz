@@ -30,12 +30,19 @@ body {
     box-shadow: 0 0 10px 2px;
 }
 
+.introduction p {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
 #question {
-    font-size: 20px;
+    font-size: 22px;
     padding: 10px;
 }
 
-.btn-grid {
+.answer-grid {
     display: grid;
     grid-template-columns: repeat(1, auto);
     gap: 10px;
@@ -43,7 +50,7 @@ body {
 }
 
 .answer-btn {
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 5px;
     padding: 5px 10px;
 }
@@ -52,18 +59,9 @@ body {
     box-shadow: 0 0 5px var(--vscode);
 }
 
-/* .answer-btn.correct {
-    color: var(--correct);
-    color:black;
-}
-
-.answer-btn.wrong {
-    color: var(--wrong);
-} */
-
 .start-btn,
 .next-btn {
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
 }
 

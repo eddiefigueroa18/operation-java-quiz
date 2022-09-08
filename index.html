@@ -9,18 +9,40 @@
 </head>
 <body>
     <section class="container">
+        <div class="introduction" id="instructions">
+            <p>
+                Test your knowledge on JavaScript! The quiz has a timer of 8 minutes. There are 10 questions, and for each question you get wrong, 30 seconds will be subtracted from the timer. Your score will be added at the end. Are you up to the challenge? Let's see what you got! 
+                <br>
+                <br>
+                <strong> Press Start when ready.</strong>
+            </p>
+        </div>
+<!-- This is Question section.  -->
         <div id="question-container" class="hide">
             <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
+<!-- These are the answer boxes/buttons.  -->
+            <div id="answer-buttons" class="answer-grid">
                 <button class="answer-btn">Answer 1</button>
                 <button class="answer-btn">Answer 2</button>
                 <button class="answer-btn">Answer 3</button>
                 <button class="answer-btn">Answer 4</button>
              </div> 
         </div>
+<!-- These are the controls for starting and moving on with the quiz  -->
         <div class="controls">
             <button id="start-btn" clss="start-btn btn">Start</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
+        </div>
+<!-- This is the textbox input for your initials -->
+        <div>
+            <h1 class="hide" id="initial-textbox">Enter your intials for your score</h1>
+            <input class="hide" type="text" placeholder="Initials go here" maxlength="25"/>
+            <button class="hide" id="save-initials">Save Initials</button>
+        </div>
+<!-- This is the collection of highscores  -->
+        </div>
+        <div id="highscore-container" class="hide">
+            <h2 id="highscore">Highscores</h2>
         </div>
     </section>
     <script src="script.js"></script>

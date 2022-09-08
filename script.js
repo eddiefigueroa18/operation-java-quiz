@@ -3,15 +3,20 @@ const nextButton = document.getElementById("next-btn");
 const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
+const openingIntro = document.getElementById("instructions");
 
 let shuffledQuestions, currentQuestionIndex;
 
 startButton.addEventListener("click", startgame);
+startButton.addEventListener("click", hideIntro);
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++ 
     setNextQuestion();
 });
 
+function hideIntro() {
+    openingIntro.classList.add("hide");
+}
 //This is how we start the quiz
 //We hide the start button once it is clicked
 //We shuffle the questions so that the order is not always the same
@@ -27,7 +32,7 @@ function startgame() {
 
 
 //This sets the next question and resets the state of the container 
-//It also shows the shuffled question
+//It also shuffles the questions
 function setNextQuestion () {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex]);
@@ -71,19 +76,11 @@ function selectAnswer(e) {
     });
 }
 
-
 function setStatusClass(element, correct) {
     clearStatusClass(element);
-    // if (correct) {
-    //     element.classlist.add("correct");
-    // } else {
-    //     element.classList.add("wrong");
-    // }
 }
 
 function clearStatusClass(element) {
-    // element.classList.remove("correct");
-    // element.classList.remove("wrong");
 }
 
 const questions = [
