@@ -7,8 +7,13 @@
     <link href="./Assets/style.css" rel="stylesheet">
     <title>Java quiz</title>
 </head>
+
+
 <body>
     <section class="container">
+        <!-- This is the timer  -->
+        <p id="countdown"></p>
+        <!-- This is the intro  -->
         <div class="introduction" id="instructions">
             <p>
                 Test your knowledge on JavaScript! The quiz has a timer of 8 minutes. There are 10 questions, and for each question you get wrong, 30 seconds will be subtracted from the timer. Your score will be added at the end. Are you up to the challenge? Let's see what you got! 
@@ -33,14 +38,14 @@
             <button id="start-btn" clss="start-btn btn">Start</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
         </div>
-<!-- This is the textbox input for your initials -->
-        <div>
-            <h1 class="hide" id="initial-textbox">Enter your intials for your score</h1>
-            <input class="hide" type="text" placeholder="Initials go here" maxlength="25"/>
-            <button class="hide" id="save-initials">Save Initials</button>
+<!-- This is the score outcome and the textbox input for your initials -->
+        <div class="hide" id="player-score">
+            <h1 id="score">Your score:</h1>
+                <p>Enter your initials to save your score!</p>
+            <input id="initials-box" type="text" placeholder="Initials go here" maxlength="5"/>
+            <button id="save-initials-btn">Save Initials</button>
         </div>
 <!-- This is the collection of highscores  -->
-        </div>
         <div id="highscore-container" class="hide">
             <h2 id="highscore">Highscores</h2>
         </div>

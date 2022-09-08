@@ -4,19 +4,45 @@ const questionContainerElement = document.getElementById("question-container");
 const questionElement = document.getElementById("question");
 const answerButtonsElement = document.getElementById("answer-buttons");
 const openingIntro = document.getElementById("instructions");
+const displayHighScore = document.getElementById("player-score");
+const timer = document.getElementById("countdown");
+const startingMinutes = 8;
+
+let score = 0;
+
+let time = startingMinutes * 60;
 
 let shuffledQuestions, currentQuestionIndex;
 
+
 startButton.addEventListener("click", startgame);
 startButton.addEventListener("click", hideIntro);
+startButton.addEventListener("click", updateCountdown);
+
+
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++ 
     setNextQuestion();
 });
 
+
+
+//This hides the intro once game is started
 function hideIntro() {
     openingIntro.classList.add("hide");
 }
+
+
+//Timer stuff
+setInterval(updateCountdown, 1000);
+function updateCountdown () {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    seconds = seconds < 8 ? '0' + seconds : seconds;
+    timer.innerHTML = `${minutes}:${seconds}`;
+    time--;
+}
+
 //This is how we start the quiz
 //We hide the start button once it is clicked
 //We shuffle the questions so that the order is not always the same
@@ -39,7 +65,7 @@ function setNextQuestion () {
 }
 
 
-
+//The following code works but I still dont exactly get how
 function showQuestion(questionText) {
     questionElement.innerText = questionText.questionText;
     questionText.answers.forEach(answer => {
@@ -55,15 +81,12 @@ function showQuestion(questionText) {
 }
 
 
-
-
 function resetState() {
     nextButton.classList.add("hide");
     while (answerButtonsElement.firstChild) {
         answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
 }
-
 
 
 function selectAnswer(e) {
@@ -82,6 +105,19 @@ function setStatusClass(element, correct) {
 
 function clearStatusClass(element) {
 }
+
+// function gameOver () {
+//     if (currentQuestionIndex <= 0)
+//     display: none;
+//     enterHighscore()
+// }
+
+
+// function enterHighscore() {
+//     displayHighScore.classList.remove("hide");
+// }
+
+
 
 const questions = [
     {
