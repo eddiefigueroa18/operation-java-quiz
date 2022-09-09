@@ -39,6 +39,9 @@ function updateCountdown () {
     seconds = seconds < 8 ? '0' + seconds : seconds;
     timer.innerHTML = `${minutes}:${seconds}`;
     time--;
+    if (updateCountdown.time = 0) {
+        gameOver();
+    }
 }
 
 //This is how we start the quiz
@@ -61,7 +64,6 @@ function setNextQuestion () {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
-//The following code works but I still dont exactly get how
 function showQuestion(questionText) {
     questionElement.innerText = questionText.questionText;
     questionText.answers.forEach(answer => {
@@ -86,8 +88,8 @@ function selectAnswer() {
 
 
 function gameOver () {
-    if (currentQuestionIndex <= 0)
-    display: none;
+    // if (currentQuestionIndex <= 0)
+    questionContainerElement.add("hide")
     enterHighscore()
 }
 
