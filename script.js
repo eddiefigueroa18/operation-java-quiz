@@ -7,12 +7,15 @@ const openingIntro = document.getElementById("instructions");
 const displayHighScore = document.getElementById("player-score");
 const timer = document.getElementById("countdown");
 const startingMinutes = 8;
+const timeScore = document.getElementById("timeScore");
+const saveInitialsButton = document.getElementById("save-initials-btn");
 
+var initialsBox = document.getElementById("initials-box");
 let score = 0;
 
 let time = startingMinutes * 60;
-
-let shuffledQuestions, currentQuestionIndex;
+let timerInterval 
+let currentQuestionIndex;
 
 
 startButton.addEventListener("click", startgame);
@@ -23,6 +26,9 @@ startButton.addEventListener("click", updateCountdown);
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++ 
     setNextQuestion();
+    if (questions[currentQuestionIndex].answers.correct == false) {
+        time -= 30; 
+    }
 });
 
 
@@ -32,14 +38,13 @@ function hideIntro() {
 }
 
 //Timer stuff
-setInterval(updateCountdown, 1000);
 function updateCountdown () {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
     seconds = seconds < 8 ? '0' + seconds : seconds;
     timer.innerHTML = `${minutes}:${seconds}`;
     time--;
-    if (updateCountdown.time = 0) {
+    if (updateCountdown.time === 0) {
         gameOver();
     }
 }
@@ -48,10 +53,10 @@ function updateCountdown () {
 //We hide the start button once it is clicked
 //We shuffle the questions so that the order is not always the same
 function startgame() {
+    timerInterval = setInterval(updateCountdown, 1000);
     console.log("Started Game");
     startButton.classList.add("hide");
     timer.classList.remove("hide");
-    shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
@@ -61,7 +66,7 @@ function startgame() {
 //It also shuffles the questions
 function setNextQuestion () {
     resetState()
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    showQuestion(questions [currentQuestionIndex]);
 }
 
 function showQuestion(questionText) {
@@ -73,6 +78,10 @@ function showQuestion(questionText) {
         button.addEventListener("click",selectAnswer);
         answerButtonsElement.append(button);
     })
+    if (currentQuestionIndex === 9) {
+        clearInterval(timerInterval);
+        gameOver();
+    }
 }
 
 function resetState() {
@@ -88,16 +97,30 @@ function selectAnswer() {
 
 
 function gameOver () {
-    // if (currentQuestionIndex <= 0)
-    questionContainerElement.add("hide")
+    console.log ("test");
+    questionContainerElement.classList.add("hide")
     enterHighscore()
 }
 
 
 function enterHighscore() {
     displayHighScore.classList.remove("hide");
+    timeScore.innerText = time;
 }
 
+saveInitialsButton.addEventListener("click", saveHighscore);
+
+function saveHighscore() {
+    var initialsValue = initialsBox.value;
+    console.log(initialsValue);
+    var userScore = time;
+    var newScore = {
+        userInitials: initialsValue,
+        userScore: userScore,
+    }
+    console.log(newScore);
+    localStorage.setItem("playerScore", JSON.stringify(newScore));
+}
 
 
 const questions = [
