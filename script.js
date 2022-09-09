@@ -26,12 +26,10 @@ nextButton.addEventListener("click", () => {
 });
 
 
-
 //This hides the intro once game is started
 function hideIntro() {
     openingIntro.classList.add("hide");
 }
-
 
 //Timer stuff
 setInterval(updateCountdown, 1000);
@@ -46,16 +44,15 @@ function updateCountdown () {
 //This is how we start the quiz
 //We hide the start button once it is clicked
 //We shuffle the questions so that the order is not always the same
-//We then remove the 'hide' attribute we added in the CSS so that the whole conatiner is shown 
 function startgame() {
     console.log("Started Game");
     startButton.classList.add("hide");
+    timer.classList.remove("hide");
     shuffledQuestions = questions.sort(() => Math.random() - .5);
     currentQuestionIndex = 0;
     questionContainerElement.classList.remove("hide");
     setNextQuestion();
 }
-
 
 //This sets the next question and resets the state of the container 
 //It also shuffles the questions
@@ -64,7 +61,6 @@ function setNextQuestion () {
     showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
-
 //The following code works but I still dont exactly get how
 function showQuestion(questionText) {
     questionElement.innerText = questionText.questionText;
@@ -72,14 +68,10 @@ function showQuestion(questionText) {
         const button = document.createElement("button");
         button.innerText = answer.text;
         button.classList.add("answer-btn");
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
-        }
         button.addEventListener("click",selectAnswer);
         answerButtonsElement.append(button);
     })
 }
-
 
 function resetState() {
     nextButton.classList.add("hide");
@@ -88,34 +80,21 @@ function resetState() {
     }
 }
 
-
-function selectAnswer(e) {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct;
-    setStatusClass(document.body, correct)
-    Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct);
+function selectAnswer() {
     nextButton.classList.remove("hide"); 
-    });
+    }
+
+
+function gameOver () {
+    if (currentQuestionIndex <= 0)
+    display: none;
+    enterHighscore()
 }
 
-function setStatusClass(element, correct) {
-    clearStatusClass(element);
+
+function enterHighscore() {
+    displayHighScore.classList.remove("hide");
 }
-
-function clearStatusClass(element) {
-}
-
-// function gameOver () {
-//     if (currentQuestionIndex <= 0)
-//     display: none;
-//     enterHighscore()
-// }
-
-
-// function enterHighscore() {
-//     displayHighScore.classList.remove("hide");
-// }
 
 
 
