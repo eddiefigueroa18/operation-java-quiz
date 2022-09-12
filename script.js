@@ -32,7 +32,7 @@ nextButton.addEventListener("click", () => {
     setNextQuestion();
     if (questions[currentQuestionIndex].answers.correct == false) {
         time = time - 30; 
-    }
+    };
 });
 
 
@@ -48,7 +48,8 @@ function updateCountdown () {
     seconds = seconds < 8 ? '0' + seconds : seconds;
     timer.innerHTML = `${minutes}:${seconds}`;
     time--;
-    if (updateCountdown.time === 0) {
+    if (time === 0) {
+        clearInterval(timerInterval);
         gameOver();
     }
 }
@@ -69,7 +70,7 @@ function startgame() {
 //This sets the next question and resets the state of the container 
 //It also shuffles the questions
 function setNextQuestion () {
-    resetState()
+    resetState();
     showQuestion(questions [currentQuestionIndex]);
 }
 
