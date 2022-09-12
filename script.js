@@ -9,6 +9,10 @@ const timer = document.getElementById("countdown");
 const startingMinutes = 8;
 const timeScore = document.getElementById("timeScore");
 const saveInitialsButton = document.getElementById("save-initials-btn");
+const highscoreContainer = document.getElementById("highscore-container");
+// const restartButton = document.getElementById("restart");
+
+
 
 var initialsBox = document.getElementById("initials-box");
 let score = 0;
@@ -27,7 +31,7 @@ nextButton.addEventListener("click", () => {
     currentQuestionIndex++ 
     setNextQuestion();
     if (questions[currentQuestionIndex].answers.correct == false) {
-        time -= 30; 
+        time = time - 30; 
     }
 });
 
@@ -97,9 +101,9 @@ function selectAnswer() {
 
 
 function gameOver () {
-    console.log ("test");
-    questionContainerElement.classList.add("hide")
-    enterHighscore()
+    console.log ("GG");
+    questionContainerElement.classList.add("hide");
+    enterHighscore();
 }
 
 
@@ -109,6 +113,7 @@ function enterHighscore() {
 }
 
 saveInitialsButton.addEventListener("click", saveHighscore);
+saveInitialsButton.addEventListener("click", showAllScores);
 
 function saveHighscore() {
     var initialsValue = initialsBox.value;
@@ -118,9 +123,26 @@ function saveHighscore() {
         userInitials: initialsValue,
         userScore: userScore,
     }
-    console.log(newScore);
-    localStorage.setItem("playerScore", JSON.stringify(newScore));
+    localStorage.setItem("newScore", JSON.stringify(newScore));
 }
+
+function showAllScores () {
+    displayHighScore.classList.add("hide");
+    highscoreContainer.classList.remove("hide");
+    timer.classList.add("hide");
+    renderLastScore();
+}
+
+function renderLastScore() {
+    var render = JSON.parse(localStorage.getItem("newScore"));
+}
+
+//*restart 
+// restartButton.addEventListener("click", startgame);
+// function restartQuiz () {
+//     startgame();
+// }
+
 
 
 const questions = [

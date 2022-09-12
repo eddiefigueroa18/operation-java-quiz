@@ -16,7 +16,7 @@
         <!-- This is the intro  -->
         <div class="introduction" id="instructions">
             <p>
-                Test your knowledge on JavaScript! The quiz has a timer of 8 minutes. There are 10 questions, and for each question you get wrong, 30 seconds will be subtracted from the timer. Your score will be added at the end. Are you up to the challenge? Let's see what you got! 
+                Test your knowledge on JavaScript! The quiz has a timer of 8 minutes. There are 10 questions, and for each question you get wrong, 30 seconds will be subtracted from the timer. Your score will be the total time in seconds. Are you up to the challenge? Let's see what you got! 
                 <br>
                 <br>
                 <strong> Press Start when ready.</strong>
@@ -43,7 +43,7 @@
 
 <!-- This is the score outcome and the textbox input for your initials -->
         <div class="hide" id="player-score">
-            <h1 id="score">Your score:<span id="timeScore"></span></h1>
+            <h1 id="score">Your score: <span id="timeScore"></span></h1>
                 <p>Enter your initials to save your score!</p>
             <input id="initials-box" type="text" placeholder="Initials go here" maxlength="5"/>
             <button id="save-initials-btn">Save Initials</button>
@@ -51,8 +51,17 @@
 
 
 <!-- This is the collection of highscores  -->
+<!-- add class=hide once you finish testing it  -->
         <div id="highscore-container" class="hide">
             <h2 id="highscore">Highscores</h2>
+            <p>
+                <span id="user-info"></span>
+            </p>
+                <!-- <div id="user-score">
+                    <p>User Initials</p>
+                    <P>Score</P>
+                </div> -->
+            <button id="restart">Restart Quiz</button>
         </div>
     </section>
     <script src="script.js"></script>

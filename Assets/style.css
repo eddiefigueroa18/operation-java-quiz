@@ -7,8 +7,6 @@
 
 :root {
     --vscode: #252934;
-    --correct: #15d80fc4;
-    --wrong: #ee1924c4;
 }
 
 body {
@@ -95,6 +93,19 @@ section p {
     margin-right: 350px;
     margin-bottom: 50px;
 }
+
+#highscore {
+   text-align: center; 
+}
+
+#restart {
+    margin: 10px;
+    align-items: center;
+}
+
+/* #user-score {
+    display: flex;
+} */
 
 .hide {
     display: none;
