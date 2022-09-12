@@ -10,8 +10,9 @@ const startingMinutes = 8;
 const timeScore = document.getElementById("timeScore");
 const saveInitialsButton = document.getElementById("save-initials-btn");
 const highscoreContainer = document.getElementById("highscore-container");
-// const restartButton = document.getElementById("restart");
-
+const restartButton = document.getElementById("restart");
+const highscore = document.getElementById("highscore");
+const userInfo = document.getElementById("user-info");
 
 
 var initialsBox = document.getElementById("initials-box");
@@ -26,7 +27,7 @@ startButton.addEventListener("click", startgame);
 startButton.addEventListener("click", hideIntro);
 startButton.addEventListener("click", updateCountdown);
 
-
+//* get timer to subtract 30 seconds when wrong answer is selected
 nextButton.addEventListener("click", () => {
     currentQuestionIndex++ 
     setNextQuestion();
@@ -35,8 +36,6 @@ nextButton.addEventListener("click", () => {
     };
 });
 
-
-//This hides the intro once game is started
 function hideIntro() {
     openingIntro.classList.add("hide");
 }
@@ -134,15 +133,21 @@ function showAllScores () {
     renderLastScore();
 }
 
+//*?????????
+TODO://Get local storage to display on page
+
 function renderLastScore() {
     var render = JSON.parse(localStorage.getItem("newScore"));
+    // if (localStorage.getItem("newScore") != null) {
+    //     document.getElementById("user-info").innerHTML =
+    // };
 }
 
-//*restart 
-// restartButton.addEventListener("click", startgame);
-// function restartQuiz () {
-//     startgame();
-// }
+
+restartButton.addEventListener("click", restartQuiz);
+function restartQuiz () {
+    window.location.reload();
+}
 
 
 
