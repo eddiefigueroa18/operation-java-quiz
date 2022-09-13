@@ -11,21 +11,17 @@
 
 <body>
     <section class="container">
-        <!-- This is the timer  -->
         <p id="countdown" class="hide"></p>
-        <!-- This is the intro  -->
         <div class="introduction" id="instructions">
             <p>
-                Test your knowledge on JavaScript! The quiz has a timer of 8 minutes. There are 10 questions in total. For each question you get wrong, 30 seconds will be subtracted from the timer. Your score will be the total time in seconds it took to complete the quiz. Are you up to the challenge? Let's see what you got! 
+                Test your knowledge on JavaScript! The quiz has a timer of 8 minutes. There are 10 questions in total. For each question you get wrong, 30 seconds will be subtracted from the timer once you hit "NEXT" to confirm your answer. Your score will be the total time in seconds it took to complete the quiz. Are you up to the challenge? Let's see what you got! 
                 <br>
                 <br>
                 <strong> Press Start when ready.</strong>
             </p>
         </div>
-<!-- This is Question section.  -->
         <div id="question-container" class="hide">
             <div id="question">Question</div>
-<!-- These are the answer boxes/buttons.  -->
             <div id="answer-buttons" class="answer-grid">
                 <button class="answer-btn">Answer 1</button>
                 <button class="answer-btn">Answer 2</button>
@@ -33,26 +29,16 @@
                 <button class="answer-btn">Answer 4</button>
              </div> 
         </div>
-<!-- These are the controls for starting and moving on with the quiz  -->
-
         <div class="controls">
             <button id="start-btn" clss="start-btn btn">Start</button>
             <button id="next-btn" class="next-btn btn hide">Next</button>
         </div>
-
-
-<!-- This is the score outcome and the textbox input for your initials -->
         <div class="hide" id="player-score">
-            
             <h1 id="score">Your score: <span id="timeScore"></span></h1>
                 <p>Enter your initials to save your score!</p>
             <input id="initials-box" type="text" placeholder="Initials go here" maxlength="5"/>
             <button id="save-initials-btn">Save Initials</button>
         </div>
-
-
-<!-- This is the collection of highscores  -->
-<!-- add class=hide once you finish testing it  -->
         <div id="highscore-container" class="hide">
             <h2 id="highscore">Highscores</h2>
             <p>

@@ -13,6 +13,7 @@ const highscoreContainer = document.getElementById("highscore-container");
 const restartButton = document.getElementById("restart");
 const highscore = document.getElementById("highscore");
 const userInfo = document.getElementById("user-info");
+var selectedChoice = "" 
 
 
 var initialsBox = document.getElementById("initials-box");
@@ -29,11 +30,14 @@ startButton.addEventListener("click", updateCountdown);
 
 //* get timer to subtract 30 seconds when wrong answer is selected
 nextButton.addEventListener("click", () => {
+    for (var i = 0; i < 4; i++) {
+        if (questions[currentQuestionIndex].answers[i].text === selectedChoice && questions[currentQuestionIndex].answers[i].correct === false) {
+            console.log("wrong")
+            time = time - 30; 
+        };
+    }
     currentQuestionIndex++ 
     setNextQuestion();
-    if (questions[currentQuestionIndex].answers.correct == false) {
-        time = time - 30; 
-    };
 });
 
 function hideIntro() {
@@ -53,9 +57,6 @@ function updateCountdown () {
     }
 }
 
-//This is how we start the quiz
-//We hide the start button once it is clicked
-//We shuffle the questions so that the order is not always the same
 function startgame() {
     timerInterval = setInterval(updateCountdown, 1000);
     console.log("Started Game");
@@ -66,8 +67,6 @@ function startgame() {
     setNextQuestion();
 }
 
-//This sets the next question and resets the state of the container 
-//It also shuffles the questions
 function setNextQuestion () {
     resetState();
     showQuestion(questions [currentQuestionIndex]);
@@ -95,7 +94,9 @@ function resetState() {
     }
 }
 
-function selectAnswer() {
+function selectAnswer(event) {
+    console.log(event.target.innerText);
+    selectedChoice = event.target.innerText;
     nextButton.classList.remove("hide"); 
     }
 
@@ -133,14 +134,12 @@ function showAllScores () {
     renderLastScore();
 }
 
-//*?????????
-TODO://Get local storage to display on page
-
 function renderLastScore() {
     var render = JSON.parse(localStorage.getItem("newScore"));
-    // if (localStorage.getItem("newScore") != null) {
-    //     document.getElementById("user-info").innerHTML =
-    // };
+    console.log(render)
+    if (localStorage.getItem("newScore") != null) {
+        document.getElementById("user-info").innerHTML = render.userInitials + ":  " + render.userScore;
+    }
 }
 
 
@@ -148,7 +147,6 @@ restartButton.addEventListener("click", restartQuiz);
 function restartQuiz () {
     window.location.reload();
 }
-
 
 
 const questions = [
