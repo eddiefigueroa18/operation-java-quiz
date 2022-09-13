@@ -44,7 +44,7 @@ function hideIntro() {
     openingIntro.classList.add("hide");
 }
 
-//Timer stuff
+
 function updateCountdown () {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
@@ -147,7 +147,6 @@ restartButton.addEventListener("click", restartQuiz);
 function restartQuiz () {
     window.location.reload();
 }
-
 
 const questions = [
     {
